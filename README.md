@@ -6,6 +6,13 @@
 [![React](https://img.shields.io/badge/React-19-blue.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-7-purple.svg)](https://vitejs.dev/)
 
+## 📸 Preview
+
+<div align="center">
+  <img src="./src/assets/developer-daily-preview.png" alt="Developer Daily - Vintage Newspaper Portfolio Preview" width="800">
+  <p><em>Authentic 1880s newspaper design meets modern web development</em></p>
+</div>
+
 ## 🌟 Live Demo
 
 **[Visit Portfolio →](https://jedkx.github.io/Jedkx-NewsPaper-Portfolio)**
