@@ -15,7 +15,7 @@
 
 ## 🌟 Live Demo
 
-**[Visit Portfolio →](https://jedkx.github.io/Jedkx-NewsPaper-Portfolio)**
+**<a href="https://jedkx.github.io/Jedkx-NewsPaper-Portfolio" target="_blank">Visit Portfolio →</a>**
 
 ## 📋 About
 

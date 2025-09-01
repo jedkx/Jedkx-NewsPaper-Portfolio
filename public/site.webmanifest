@@ -1,9 +1,9 @@
 {
-  "name": "Caner Coşkun - Senior Frontend Developer Portfolio",
-  "short_name": "Caner Portfolio",
-  "description": "Professional portfolio showcasing innovative web development projects with vintage newspaper design",
-  "theme_color": "#f7f4ed",
-  "background_color": "#f7f4ed",
+  "name": "Caner Coşkun - Software Engineer Portfolio",
+  "short_name": "Developer Daily",
+  "description": "Vintage newspaper-themed portfolio showcasing modern software engineering skills",
+  "theme_color": "#2C1810",
+  "background_color": "#F5F1E8",
   "display": "standalone",
   "orientation": "portrait-primary",
   "scope": "/",
@@ -13,36 +13,16 @@
   "dir": "ltr",
   "icons": [
     {
-      "src": "/icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
-      "src": "/icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "maskable any"
-    },
-    {
       "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
-    }
-  ],
-  "screenshots": [
-    {
-      "src": "/screenshot-wide.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "form_factor": "wide"
+      "sizes": "32x32",
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
-      "src": "/screenshot-narrow.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "form_factor": "narrow"
+      "src": "/favicon-16x16.svg",
+      "sizes": "16x16", 
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
-  ],
-  "prefer_related_applications": false
+  ]
 }
