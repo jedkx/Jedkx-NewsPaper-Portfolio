@@ -1,0 +1,2745 @@
+/**
+ * ===== PORTFOLIO NEWSPAPER THEME CSS =====
+ * Author: Caner Coşkun
+ * Description: 1880s vintage newspaper layout for developer portfolio
+ * Version: 1.0.0
+ * License: MIT
+ * 
+ * 📑 TABLE OF CONTENTS:
+ * ┌─────────────────────────────────────────────────────────────┐
+ * │ 1. CSS CUSTOM PROPERTIES (Variables)                       │
+ * │ 2. BASE STYLES & RESET                                     │
+ * │ 3. NEWSPAPER HEADER & TITLE                                │
+ * │ 4. NAVIGATION BAR                                          │
+ * │ 5. ABOUT SECTION (Lead Article)                            │
+ * │ 6. SKILLS SECTION                                          │
+ * │ 7. EXPERIENCE SECTION                                      │
+ * │ 8. PROJECTS SECTION                                        │
+ * │ 9. EDUCATION SECTION                                       │
+ * │ 10. CONTACT SECTION                                        │
+ * │ 11. SIDEBAR & BRIEF ITEMS                                  │
+ * │ 12. CARDS & COMPONENTS                                     │
+ * │ 13. FOOTER STYLES                                          │
+ * │ 14. RESPONSIVE DESIGN                                      │
+ * └─────────────────────────────────────────────────────────────┘
+ */
+
+/* ===== 1. CSS CUSTOM PROPERTIES (Variables) ===== */
+:root {
+  /* Color Palette - Vintage Newspaper Theme */
+  --color-paper: #f7f4ed;
+  --color-text-primary: #1c1f33;
+  --color-border: #5a5651;
+  --color-paper-alt: #faf8f0;
+  --color-accent: #736352;
+  --color-text-secondary: #a69c8e;
+  --color-text-dark: #3d3a35;
+  --color-background-light: #f9f7f2;
+  --color-hover: rgba(255, 248, 220, 0.8);
+  --color-gold: #d4af37;
+  --color-brown: #8B4513;
+  
+  /* Typography System - 1880s Newspaper Style */
+  --font-primary: 'Playfair Display', 'Times New Roman', serif;
+  --font-secondary: 'EB Garamond', 'Times New Roman', serif;
+  --font-tertiary: 'Manrope', Arial, sans-serif;
+  
+  /* Font Scale - 1880s Dramatic Scale - Content Optimized */
+  --font-size-6xl: 2.8rem;    /* Massive headlines */
+  --font-size-5xl: 1.8rem;    /* Big headlines */
+  --font-size-4xl: 1.4rem;    /* Section headers */
+  --font-size-3xl: 1.2rem;    /* Subheadlines */
+  --font-size-2xl: 1.1rem;    /* Body text - DAHA BÜYÜK */
+  --font-size-xl: 1rem;       /* Small text - DAHA BÜYÜK */
+  --font-size-lg: 0.9rem;
+  --font-size-md: 0.8rem;     /* Tiny text - DAHA BÜYÜK */
+  --font-size-sm: 0.7rem;     /* Microscopic - DAHA BÜYÜK */
+  --font-size-xs: 0.6rem;    /* Ultra small - DAHA BÜYÜK */
+  
+  /* Line Height Scale - Optimized for Reading */
+  --leading-tight: 1.2;
+  --leading-normal: 1.4;
+  --leading-relaxed: 1.6;
+  
+  /* Spacing Scale - Tighter for 1880s cramped layout */
+  --space-1: 0.15rem;
+  --space-2: 0.3rem;
+  --space-4: 0.6rem;
+  --space-6: 0.9rem;
+  --space-8: 1.2rem;
+}
+
+/* ===== 2. BASE STYLES & RESET ===== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
+}
+
+body {
+  font-family: var(--font-secondary);
+  font-size: 16px;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  background-color: var(--color-paper);
+  
+  /* Vintage paper texture */
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(28, 31, 51, 0.15) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+
+/* ===== 3. LAYOUT & GRID SYSTEM ===== */
+
+/* Main Newspaper Wrapper - Authentic Paper */
+.newspaper-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: var(--space-2);
+  background: #f0eddf; /* Yaşlı kağıt arka plan */
+}
+
+.newspaper-page.single-page {
+  max-width: 1200px;
+  width: 100%;
+  background: var(--color-paper);
+  box-shadow: 
+    0 2px 10px rgba(0,0,0,0.08),
+    inset 0 0 80px rgba(115, 99, 82, 0.05); /* Hafif yaşlanma efekti */
+  border: 1px solid #d4cfc0;
+  padding: var(--space-4);
+  position: relative;
+}
+
+/* Paper texture overlay */
+.newspaper-page.single-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 30%, rgba(115, 99, 82, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 75% 70%, rgba(115, 99, 82, 0.03) 1px, transparent 1px);
+  background-size: 35px 35px, 25px 25px;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* ===== 4. HEADER & NAVIGATION ===== */
+
+/* Newspaper Header - Masthead */
+.newspaper-header {
+  text-align: center;
+  border-top: 3px solid var(--color-text-primary);
+  border-bottom: 3px solid var(--color-text-primary);
+  padding: var(--space-4) 0;
+  margin-bottom: var(--space-4);
+  position: relative;
+  background: var(--color-paper);
+}
+
+.masthead-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-tertiary);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+}
+
+/* ===== 3. NEWSPAPER HEADER & TITLE ===== */
+
+.newspaper-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-6xl);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  margin: var(--space-4) 0;
+  text-align: center;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+  line-height: var(--leading-tight);
+}
+
+.subtitle-line {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-xl);
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+}
+
+/* ===== 4. NAVIGATION BAR ===== */
+
+.newspaper-nav {
+  display: flex;
+  padding: var(--space-2) 0;
+  gap: 0;
+  flex-direction: row;
+  justify-content: center;
+  border-top: 2px solid var(--color-border);
+  background: var(--color-paper);
+  position: relative;
+}
+
+.nav-link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  font-family: var(--font-primary);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 8px 14px;
+  border-right: 1px solid rgba(139, 115, 85, 0.3);
+  transition: all 0.6s ease;
+  text-align: center;
+  filter: grayscale(20%);
+}
+
+.nav-link:last-child {
+  border-right: none;
+}
+
+.nav-link:hover {
+  color: var(--color-accent);
+  background: rgba(139, 115, 85, 0.1);
+  transform: translateY(-1px);
+  filter: grayscale(0%);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+/* Main Headline Section */
+.main-headline-section {
+  text-align: center;
+  margin-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-text-primary);
+  padding-bottom: var(--space-2);
+}
+
+.main-headline {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0.9;
+  margin-bottom: var(--space-2);
+}
+
+.headline-subtitle {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-md);
+  font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+}
+
+.news-excerpt {
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  line-height: 1.3;
+  color: var(--color-text-primary);
+  text-align: justify;
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  background: rgba(249, 246, 231, 0.3);
+  border-left: 3px solid var(--color-accent);
+}
+
+/* Enhanced Newspaper Grid System - Compact Version */
+.newspaper-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); 
+  grid-template-rows: auto auto auto;
+  gap: 0.3rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
+  position: relative;
+}
+
+/* Ensure text wrapping and prevent overflow */
+.newspaper-grid > * {
+  border-top: 1px dotted var(--color-border);
+  padding-top: var(--space-4);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  max-width: 100%;
+}
+
+/* Remove border from first row items (first 3 items) */
+.lead-article,
+.tech-article, 
+.business-article {
+  border-top: none;
+  padding-top: 0.8rem;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* ===== 5. ABOUT SECTION (Lead Article) ===== */
+
+.lead-article {
+  grid-column: 1 / 5; /* Columns 1-4 */
+  grid-row: 1;
+  overflow: hidden;
+  align-self: start;
+}
+
+.tech-article {
+  grid-column: 5 / 8; /* Columns 5-7 (daha dar) */
+  grid-row: 1;
+  overflow: hidden;
+  align-self: start;
+}
+
+/* ===== 7. EXPERIENCE SECTION ===== */
+
+.business-article {
+  grid-column: 8 / 13; /* Columns 8-12 (daha geniş) */
+  grid-row: 1;
+  overflow: hidden;
+  align-self: start;
+}
+
+/* Hover effects for main articles */
+.lead-article:hover,
+.tech-article:hover, 
+.business-article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Remove link styling from article cards */
+a.lead-article,
+a.tech-article,
+a.business-article {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+
+a.lead-article:hover,
+a.tech-article:hover,
+a.business-article:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ===== 5. ARTICLE STYLES ===== */
+
+/* Remove link styling from all card types */
+a.newspaper-card,
+a.project-story-block,
+a.education-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Ensure project blocks maintain grid layout */
+a.project-story-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-2);
+}
+
+a.newspaper-card:hover,
+a.project-story-block:hover,
+a.education-card:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.news-sidebar {
+  grid-column: 13 / 13; /* Haber sidebar kaldırıldı */
+  display: none;
+}
+
+/* ===== 8. PROJECTS SECTION ===== */
+
+.feature-article {
+  grid-column: 1 / 7; /* Columns 1-6 - Projects için wider */
+  grid-row: 2;
+  overflow: hidden;
+  align-self: start;
+  padding-top: var(--space-4);
+}
+
+.classified-section {
+  grid-column: 8 / 13; /* Columns 8-12 - Contact section için */
+  grid-row: 2;
+  border: 2px solid var(--color-border);
+  background: var(--classified-bg);
+  padding: var(--space-4);
+  overflow: hidden;
+  align-self: start;
+}
+
+/* ===== 9. EDUCATION SECTION ===== */
+
+.education-section {
+  grid-column: 7 / 13; /* Right side - columns 7-12 */
+  grid-row: 2;
+  padding: var(--space-4);
+  margin-top: 0; /* Reset margin to align with projects */
+  margin-left: var(--space-4);
+  margin-right: var(--space-2);
+  align-self: start;
+  padding-top: var(--space-4); /* Match projects padding */
+}
+
+.education-compact {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.education-compact .education-item {
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  background: var(--classified-bg);
+  font-family: var(--font-secondary);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+/* ===== 6. CARD COMPONENTS ===== */
+
+/* ===== 6.5 Education Cards ===== */
+.education-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+}
+
+.education-card {
+  text-align: center;
+  padding: 0.8rem;
+  filter: grayscale(30%);
+  transition: all 0.6s ease;
+}
+
+.education-icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-2);
+  filter: grayscale(100%);
+  transition: filter 0.6s ease;
+}
+
+.education-card:hover {
+  filter: grayscale(0%);
+}
+
+.education-card:hover .education-icon {
+  filter: grayscale(0%);
+}
+
+.education-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-2xl);
+  font-weight: bold;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.education-institution {
+  font-family: var(--font-tertiary);
+  font-size: 0.85rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.education-period {
+  font-family: var(--font-tertiary);
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-2);
+  color: var(--color-border);
+}
+
+.education-description {
+  font-size: var(--font-size-xl);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  font-style: italic;
+}
+
+/* ===== 10. CONTACT SECTION ===== */
+
+.contact-section {
+  grid-column: 1 / 13; /* Full width */
+  grid-row: 3;
+  align-self: start;
+  padding-top: var(--space-4); /* Consistent padding */
+}
+
+.contact-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+  margin-top: var(--space-2);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 1880s Vintage Contact Style */
+.vintage-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-4);
+  padding: var(--space-4);
+  border: 2px solid var(--color-border);
+  border-radius: 3px;
+  background: var(--color-paper-alt);
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-entry {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) 0;
+  border-bottom: 1px dotted var(--color-text-secondary);
+}
+
+.contact-entry:last-child {
+  border-bottom: none;
+}
+
+.contact-label {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  min-width: 140px;
+  text-align: left;
+}
+
+.contact-link {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--color-accent);
+  text-decoration-style: solid;
+  font-weight: 500;
+}
+
+/* Minimal Contact in Education Section */
+.education-contact-section {
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-text-secondary);
+  text-align: center;
+}
+
+.contact-divider {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  color: var(--color-accent);
+  margin-bottom: var(--space-2);
+  letter-spacing: 4px;
+}
+
+.contact-subtitle {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Minimal Contact Links - Logo only */
+.minimal-contact-links {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-6);
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  border: 3px double var(--color-text-primary);
+  background: var(--color-paper);
+}
+
+.minimal-contact-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  transition: all 0.3s ease;
+  border-radius: 3px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  background: rgba(255,255,255,0.3);
+}
+
+.minimal-contact-item:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,0.6);
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.contact-logo {
+  width: 32px;
+  height: 32px;
+  filter: grayscale(60%) sepia(20%);
+  transition: all 0.3s ease;
+}
+
+.minimal-contact-item:hover .contact-logo {
+  filter: grayscale(0%) sepia(0%);
+  transform: scale(1.1);
+}
+
+.contact-note {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: var(--space-2);
+  padding: var(--space-1) 0;
+  border-top: 1px dotted var(--color-border);
+}
+
+/* Contact Cards - Same structure as project cards */
+.contact-projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.contact-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px dotted var(--color-border);
+  padding: var(--space-2);
+  background: var(--color-paper);
+}
+
+.contact-card:hover {
+  background: linear-gradient(135deg, var(--color-hover) 0%, rgba(255,253,235,0.9) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--color-gold);
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-card:active {
+  transform: translateY(1px);
+}
+
+.contact-icon-large {
+  width: 48px;
+  height: 48px;
+  filter: grayscale(50%) sepia(20%);
+  transition: all 0.3s ease;
+}
+
+.contact-card:hover .contact-icon-large {
+  filter: grayscale(0%) sepia(0%);
+  transform: scale(1.1);
+}
+
+/* Vintage Contact Card - Legacy styles for backup */
+.vintage-contact-card {
+  border: 1px dotted var(--color-border);
+  padding: var(--space-2);
+  background: var(--color-paper);
+  max-width: 600px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  filter: grayscale(30%);
+}
+
+.vintage-contact-card:hover {
+  background: linear-gradient(135deg, var(--color-hover) 0%, rgba(255,253,235,0.9) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--color-gold);
+  filter: grayscale(0%);
+}
+
+.contact-header-vintage {
+  text-align: center;
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.contact-category {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-1);
+}
+
+.contact-date {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.minimal-contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: var(--space-2);
+}
+
+.mini-contact-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 2px;
+}
+
+.mini-contact-item:hover {
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.4);
+  border-color: var(--color-accent);
+}
+
+.mini-contact-icon {
+  width: 28px;
+  height: 28px;
+  filter: grayscale(70%) sepia(20%);
+  transition: all 0.3s ease;
+}
+
+.mini-contact-item:hover .mini-contact-icon {
+  filter: grayscale(0%) sepia(0%);
+  transform: scale(1.1);
+}
+
+.contact-type {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 2px;
+}
+
+.contact-address {
+  font-family: var(--font-tertiary);
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-style: italic;
+  line-height: 1.2;
+}
+
+.contact-card {
+  text-align: center;
+  padding: var(--space-2);
+  filter: grayscale(30%);
+  transition: all 0.6s ease;
+  border-radius: 4px;
+}
+
+.contact-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+  filter: grayscale(100%);
+  transition: filter 0.6s ease;
+}
+
+.contact-card:hover {
+  filter: grayscale(0%);
+  transform: translateY(-2px);
+}
+
+.contact-card:hover .contact-icon {
+  filter: grayscale(0%);
+}
+
+.contact-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  margin-bottom: 0;
+  color: var(--color-text-primary);
+}
+
+.contact-method {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-sm);
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+  font-weight: 600;
+}
+
+.contact-description {
+  font-size: var(--font-size-sm);
+  line-height: 1.4;
+  text-align: justify;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-2);
+  margin: var(--space-2) 0;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  width: 30px;
+  text-align: center;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-label {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-border);
+  display: block;
+}
+
+.contact-detail {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  color: var(--color-text-primary);
+  margin-top: 2px;
+}
+
+.availability-note {
+  margin-top: var(--space-6);
+  padding: var(--space-2);
+  background: var(--color-paper-alt);
+  border: 1px dashed var(--color-border);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.services-advertisement {
+  background: var(--cream-bg);
+  border: 1px dashed var(--color-accent);
+  padding: var(--space-2);
+  text-align: center;
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  font-style: italic;
+}
+
+/* ===== 11. SIDEBAR & BRIEF ITEMS ===== */
+
+/* Standardized Hover Effect - Only Grayscale */
+.newspaper-card {
+  padding: 0.8rem;
+  border: 1px solid transparent;
+  transition: all 0.6s ease;
+  cursor: pointer;
+  position: relative;
+  background: transparent;
+  border-radius: 2px;
+  filter: grayscale(20%);
+}
+
+.newspaper-card:hover {
+  filter: grayscale(0%);
+}
+
+/* Gazete Projeler Sistemi - Resim + Yazı Format */
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin: var(--space-2) 0;
+}
+
+.project-image-placeholder {
+  float: left;
+  width: 120px;
+  height: 120px;
+  margin-right: var(--space-2);
+  margin-bottom: var(--space-2);
+}
+
+.image-frame {
+  border: 2px solid var(--color-border);
+  padding: var(--space-2);
+  background: var(--color-paper);
+  text-align: center;
+}
+
+.project-icon {
+  font-size: 1.5rem;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+.image-caption {
+  font-size: 0.75rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--color-border);
+}
+
+.project-achievements {
+  margin-top: var(--space-2);
+  display: flex;
+  gap: var(--space-1);
+  flex-wrap: wrap;
+}
+
+.achievement-badge {
+  background: var(--color-text-primary);
+  color: var(--color-paper);
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  font-weight: bold;
+  border: 1px solid var(--color-border);
+}
+
+/* Vintage Contact Section - 1800s Style */
+.classified-notice {
+  margin-top: var(--space-4);
+}
+
+.notice-box {
+  border: 3px double var(--color-border);
+  padding: var(--space-6);
+  background: var(--classified-bg);
+  position: relative;
+}
+
+.notice-headline {
+  text-align: center;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: var(--space-4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-2);
+}
+
+.craft-description {
+  margin-bottom: var(--space-6);
+  text-align: justify;
+  line-height: 1.4;
+}
+
+.specialities {
+  margin: var(--space-4) 0;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  background: var(--color-paper);
+}
+
+.speciality-line {
+  margin: var(--space-1) 0;
+  font-size: 0.9rem;
+  text-indent: 1em;
+}
+
+.correspondence-methods {
+  border-top: 2px solid var(--color-border);
+  padding-top: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.method-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: var(--space-4);
+  text-decoration: underline;
+  letter-spacing: 1px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.contact-method {
+  text-align: center;
+  padding: var(--space-2);
+  border: 1px solid var(--color-border);
+  background: var(--color-paper);
+}
+
+.contact-icon {
+  font-size: 1.2rem;
+  margin-bottom: var(--space-1);
+  display: block;
+}
+
+.contact-label {
+  font-weight: bold;
+  font-size: 0.8rem;
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-detail {
+  font-size: 0.85rem;
+  color: var(--color-text-primary);
+  font-style: italic;
+}
+
+.testimonial-box {
+  margin: var(--space-6) 0;
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  background: var(--color-paper);
+  font-style: italic;
+  text-align: center;
+}
+
+.testimonial-quote {
+  margin-bottom: var(--space-1);
+  font-size: 0.95rem;
+}
+
+.testimonial-attribution {
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--color-border);
+}
+
+.availability-notice {
+  margin-top: var(--space-4);
+  padding: var(--space-2);
+  border: 2px solid var(--color-text-primary);
+  background: var(--color-paper);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* News Sidebar Styles */
+.news-sidebar {
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-2);
+}
+
+.sidebar-header {
+  margin-bottom: var(--space-1);
+}
+
+.sidebar-category {
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--color-border);
+}
+
+.sidebar-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: var(--space-2);
+}
+
+.brief-item {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.brief-headline {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: var(--space-1);
+  line-height: 1.2;
+}
+
+.brief-text {
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  font-style: italic;
+}
+
+.advertisement-box {
+  border: 2px solid var(--color-text-primary);
+  padding: var(--space-2);
+  margin-top: var(--space-4);
+  background: var(--classified-bg);
+  text-align: center;
+}
+
+.ad-header {
+  font-size: 0.7rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2px;
+}
+
+.ad-content {
+  font-size: 0.75rem;
+  line-height: 1.4;
+}
+
+/* ===== 6.4 Project Cards ===== */
+/* Newspaper Style Projects */
+.newspaper-projects {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.project-story-block {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4);
+  align-items: start;
+}
+
+.project-story-block:last-child {
+  border-bottom: none;
+  padding-bottom: var(--space-4);
+}
+
+.project-image-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.image-placeholder {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.image-border {
+  height: 120px;
+  width: 120px;
+  border: 2px solid var(--color-border);
+  padding: var(--space-4);
+  background: var(--color-paper);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.project-visual {
+  font-size: 3rem;
+  color: var(--color-text-primary);
+  filter: grayscale(100%);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+/* Forg character specific styling */
+.project-visual.forg-character {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: grayscale(100%) contrast(1.1);
+}
+
+.project-story-block:hover .project-visual {
+  filter: grayscale(0%);
+  color: var(--color-gold);
+  transform: scale(1.1);
+}
+
+.project-story-block:hover .project-visual.forg-character {
+  filter: grayscale(0%) contrast(1.2) brightness(1.1);
+  transform: scale(1.15);
+}
+
+.image-caption-box {
+  border: 1px solid var(--color-border);
+  padding: var(--space-1);
+  background: var(--color-paper-alt);
+}
+
+.caption-text {
+  font-size: var(--font-size-sm);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  font-style: italic;
+}
+
+.project-article-text {
+  padding-left: var(--space-2);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.project-story-headline {
+  font-size: var(--font-size-4xl);
+  font-weight: 800;
+  margin-bottom: var(--space-2);
+  line-height: var(--leading-tight);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-story-content {
+  font-size: var(--font-size-xl);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  margin-bottom: var(--space-2);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-indent: 1em;
+}
+
+/* Footer Styles */
+.newspaper-footer {
+  margin-top: var(--spacing-xl);
+  padding-top: var(--space-4);
+}
+
+.footer-line {
+  height: 2px;
+  background: var(--color-text-primary);
+  margin: var(--space-2) 0;
+}
+
+.footer-content {
+  text-align: center;
+  padding: var(--space-2) 0;
+}
+
+.publisher-info {
+  font-size: 0.9rem;
+  font-weight: bold;
+  margin-bottom: var(--space-1);
+  letter-spacing: 1px;
+}
+
+.copyright-notice {
+  font-size: 0.8rem;
+  margin-bottom: var(--space-1);
+  font-style: italic;
+}
+
+.edition-info {
+  font-size: 0.75rem;
+  color: var(--color-border);
+}
+
+/* Remove old project styles */
+.projects-grid,
+.project-card,
+.project-image-placeholder,
+.image-frame,
+.project-icon,
+.image-caption,
+.project-achievements,
+.achievement-badge {
+  display: none;
+}
+
+.education-column {
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  background: var(--color-paper);
+}
+
+.education-item {
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.education-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.education-date {
+  font-size: 0.85rem;
+  color: var(--color-border);
+  font-style: italic;
+}
+
+.education-title {
+  font-weight: bold;
+  margin: var(--space-1) 0;
+}
+
+.education-institution {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+}
+
+.award-item {
+  margin-bottom: var(--space-2);
+  padding: var(--space-1);
+  border-left: 3px solid var(--color-border);
+  padding-left: var(--space-2);
+}
+
+.award-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.award-organization {
+  font-size: 0.8rem;
+  color: var(--color-border);
+  font-style: italic;
+}
+
+/* Newspaper Cards - Doğal Görünüm */
+.newspaper-card {
+  background: transparent;
+  border: none;
+  padding: var(--space-4);
+  position: relative;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.newspaper-card:hover {
+  background: rgba(115, 99, 82, 0.05);
+}
+
+/* Footer - Gazete Alt Bilgi */
+.newspaper-footer {
+  border-top: 3px double var(--color-border);
+  margin-top: var(--spacing-xl);
+  padding: var(--space-6) 0;
+  background: var(--color-paper-alt);
+  text-align: center;
+}
+
+.footer-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-tertiary);
+  font-size: 0.75rem;
+  margin-bottom: var(--space-2);
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.footer-label {
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-border);
+}
+
+.footer-value {
+  color: var(--color-text-primary);
+  font-style: italic;
+}
+
+.footer-motto {
+  font-family: var(--font-primary);
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-accent);
+  border-top: 1px dotted var(--color-border);
+  padding-top: var(--space-2);
+}
+
+.newspaper-card:hover .section-header,
+.newspaper-card:hover .box-header {
+  color: var(--color-accent);
+}
+
+/* Tıklanabilir Haber Efekti */
+.newspaper-card:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(139, 115, 85, 0.3);
+}
+
+/* News Header - Gazete Başlık Alanı */
+.news-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
+  padding-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.news-category {
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background: var(--color-paper-alt);
+  padding: 2px 6px;
+  border: 1px solid var(--color-accent);
+}
+
+.news-date {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* Read More Link */
+.read-more {
+  margin-top: var(--space-2);
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  font-style: italic;
+  text-align: right;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.read-more:hover {
+  color: var(--color-text-primary);
+}
+
+/* Vintage Stamps - 1800s Style */
+.vintage-stamps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.stamp-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.vintage-stamp {
+  width: 50px;
+  height: 50px;
+  border: 3px solid var(--color-text-primary);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper-alt);
+  position: relative;
+  transform: rotate(-2deg);
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.vintage-stamp::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border: 1px dashed var(--color-text-primary);
+  border-radius: 8px;
+}
+
+.stamp-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.stamp-text {
+  font-size: 8px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  font-family: var(--font-primary);
+}
+
+/* Project Articles - Newspaper Style */
+.project-article, .career-article {
+  margin-bottom: var(--space-6);
+  padding-bottom: var(--space-4);
+  border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+}
+
+.project-article:last-child, .career-article:last-child {
+  border-bottom: none;
+}
+
+.project-meta, .career-timeline {
+  display: flex;
+  gap: var(--space-2);
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-1);
+}
+
+.project-headline, .career-headline {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  line-height: 1.2;
+  margin-bottom: var(--space-1);
+  color: var(--color-text-primary);
+}
+
+.project-excerpt, .career-story {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin-bottom: var(--space-2);
+  text-align: justify;
+}
+
+.company-byline {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.project-links {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.vintage-link {
+  font-size: 0.75rem;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  border: 1px solid var(--color-accent);
+  padding: 2px 6px;
+  background: var(--color-paper-alt);
+  transition: all 0.2s ease;
+}
+
+.vintage-link:hover {
+  background: var(--color-accent);
+  color: var(--color-paper-alt);
+}
+
+.achievement-box {
+  background: rgba(139, 115, 85, 0.1);
+  border-left: 3px solid var(--color-accent);
+  padding: var(--space-1);
+  font-size: 0.8rem;
+  margin-top: var(--space-1);
+}
+
+/* Responsive Newspaper Layout - Referans Tabanlı */
+@media (max-width: 1440px) {
+  .newspaper-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+  
+  .lead-article {
+    grid-column: 1 / 5;
+  }
+  
+  .tech-article {
+    grid-column: 5 / 7;
+  }
+  
+  .business-article {
+    grid-column: 7 / 9;
+  }
+  
+  .feature-article {
+    grid-column: 1 / 6;
+  }
+  
+  .classified-section {
+    grid-column: 6 / 9;
+  }
+  
+  .education-section {
+    grid-column: 1 / 9;
+  }
+}
+
+@media (max-width: 1024px) {
+  .newspaper-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  
+  .lead-article {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+  
+  .tech-article {
+    grid-column: 3 / 5;
+    grid-row: 1;
+  }
+  
+  .business-article {
+    grid-column: 1 / 3;
+    grid-row: 2;
+  }
+  
+  .feature-article {
+    grid-column: 3 / 5;
+    grid-row: 2;
+  }
+  
+  .classified-section {
+    grid-column: 1 / 5;
+    grid-row: 3;
+  }
+  
+  .education-section {
+    grid-column: 1 / 5;
+    grid-row: 4;
+  }
+  
+  .contact-section {
+    grid-column: 1 / 5;
+    grid-row: 5;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .project-buttons {
+    justify-content: center;
+  }
+  
+  .project-btn {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* ===== 12. RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  /* Mobile Navigation */
+  .newspaper-nav {
+    flex-wrap: wrap;
+    gap: 0;
+    padding: var(--space-1) 0;
+  }
+  
+  .nav-link {
+    flex: 1;
+    min-width: calc(33.33% - 2px);
+    font-size: 10px;
+    padding: 4px 6px;
+    letter-spacing: 0.5px;
+    text-align: center;
+  }
+  
+  .newspaper-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .lead-article,
+  .tech-article,
+  .business-article,
+  .feature-article,
+  .classified-section,
+  .education-section,
+  .news-sidebar {
+    grid-column: 1;
+    margin-bottom: var(--space-6);
+  }
+  
+  .newspaper-card {
+    padding: 1rem;
+  }
+  
+  .project-story-block {
+    margin-bottom: var(--space-6);
+  }
+  
+  .lead-article {
+    grid-row: 1;
+  }
+  
+  .business-article {
+    grid-row: 2;
+  }
+  
+  .tech-article {
+    grid-row: 3;
+  }
+  
+  .feature-article {
+    grid-row: 4;
+  }
+  
+  .classified-section {
+    grid-row: 5;
+  }
+  
+  .education-section {
+    grid-row: 6;
+  }
+  
+  .contact-section {
+    grid-row: 7;
+  }
+  
+  .contact-minimal-layout {
+    gap: var(--space-2);
+  }
+  
+  .contact-intro {
+    font-size: 0.8rem;
+  }
+  
+  .contact-buttons-minimal {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+  
+  .contact-btn-minimal {
+    font-size: 0.75rem;
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .footer-line {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Print styles for authentic newspaper look */
+@media print {
+  .newspaper-wrapper {
+    background: white;
+    padding: 0;
+  }
+  
+  .newspaper-page.single-page {
+    box-shadow: none;
+    border: none;
+    background: white;
+  }
+  
+  .newspaper-page.single-page::before {
+    display: none;
+  }
+  
+  .newspaper-grid {
+    background-image: none;
+  }
+  
+  .breaking-label {
+    animation: none;
+  }
+}
+
+/* Enhanced Article Styles */
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-1);
+  padding-bottom: var(--space-1);
+  border-bottom: 2px solid var(--color-text-primary);
+}
+
+.article-category {
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  color: white;
+  background: var(--color-text-primary);
+  padding: 4px 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.article-date {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.article-headline {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-5xl);
+  font-weight: 900;
+  line-height: var(--leading-tight);
+  margin-bottom: var(--space-2);
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+}
+
+.byline {
+  font-size: var(--font-size-lg);
+  color: var(--color-accent);
+  font-style: italic;
+  margin-bottom: var(--space-2);
+  font-weight: 500;
+}
+
+.article-divider {
+  height: 2px;
+  background: var(--color-text-primary);
+  margin: var(--space-2) 0;
+}
+
+.lead-paragraph {
+  font-size: var(--font-size-3xl);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  margin-bottom: var(--space-4);
+}
+
+.drop-cap {
+  float: left;
+  font-size: 4.5rem;
+  line-height: 3.8rem;
+  padding-right: 6px;
+  font-weight: 900;
+  font-family: var(--font-primary);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+}
+
+.article-body {
+  font-size: var(--font-size-2xl);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  margin-bottom: var(--space-2);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-indent: 1em;
+  font-style: italic;
+}
+
+.article-footer {
+  border-top: 1px solid var(--color-accent);
+  padding-top: var(--space-2);
+  margin-top: var(--space-4);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.article-tags {
+  font-size: 0.7rem;
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+/* Classified Section Styles */
+.classified-header {
+  text-align: center;
+  margin-bottom: var(--space-4);
+  border-bottom: 2px solid var(--color-text-primary);
+  padding-bottom: var(--space-2);
+}
+
+.classified-title {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.classified-subtitle {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.classified-ad {
+  border: 1px solid var(--color-text-primary);
+  padding: var(--space-2);
+  background: white;
+}
+
+.ad-headline {
+  font-size: 0.9rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+  text-align: center;
+}
+
+.ad-content {
+  font-size: 0.8rem;
+  line-height: 1.3;
+}
+
+.contact-details {
+  margin: var(--space-2) 0;
+  border-top: 1px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+  padding: var(--space-1) 0;
+}
+
+.contact-item {
+  margin-bottom: 2px;
+  font-size: var(--font-size-sm);
+}
+
+.stamp-collection {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-1);
+  margin: var(--space-2) 0;
+}
+
+.contact-stamp {
+  width: 35px;
+  height: 35px;
+  border: 2px solid var(--color-text-primary);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-paper);
+  transform: rotate(-3deg);
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+.contact-stamp .stamp-icon {
+  font-size: 12px;
+}
+
+.contact-stamp .stamp-text {
+  font-size: 6px;
+  font-weight: bold;
+}
+
+.ad-footer {
+  margin-top: var(--space-2);
+  text-align: center;
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+/* Column Layouts */
+.column {
+  padding: var(--space-4);
+  border-right: 1px solid var(--color-border);
+}
+
+.column:last-child {
+  border-right: none;
+}
+
+.col-about {
+  grid-column: span 4;
+}
+
+.col-skills {
+  grid-column: span 3;
+}
+
+.col-experience {
+  grid-column: span 5;
+}
+
+/* Section Headers */
+.section-header {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: var(--space-1);
+  text-align: center;
+}
+
+.column-divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border);
+  margin-bottom: var(--space-4);
+}
+
+/* Special Boxes */
+.info-box {
+  grid-column: span 3;
+  border: 2px solid var(--color-text-primary);
+  padding: var(--space-4);
+  background: var(--color-paper);
+  margin-bottom: var(--space-6);
+}
+
+.box-header {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-1);
+}
+
+.date-box {
+  grid-column: span 2;
+  border: 3px solid var(--color-text-primary);
+  text-align: center;
+  padding: var(--space-6);
+  background: var(--color-paper-alt);
+  align-self: start;
+}
+
+.big-date {
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.date-year {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;
+  font-weight: bold;
+  line-height: 0.8;
+  margin: var(--space-1) 0;
+}
+
+.date-label {
+  font-family: var(--font-tertiary);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.extra-banner {
+  grid-column: span 4;
+  text-align: center;
+  border: 2px solid var(--color-text-primary);
+  padding: var(--space-4);
+  background: var(--color-text-primary);
+  color: var(--color-paper-alt);
+}
+
+.extra-text {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: var(--space-2);
+}
+
+/* Footer */
+.newspaper-footer {
+  border-top: 3px solid var(--color-text-primary);
+  padding-top: var(--space-6);
+  margin-top: var(--spacing-xl);
+}
+
+.footer-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.footer-header {
+  font-family: var(--font-primary);
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: var(--space-1);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 2px;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .content-grid {
+    grid-template-columns: repeat(6, 1fr);
+  }
+  
+  .col-about, .col-skills {
+    grid-column: span 3;
+  }
+  
+  .col-experience {
+    grid-column: span 6;
+  }
+  
+  .info-box {
+    grid-column: span 2;
+  }
+  
+  .extra-banner {
+    grid-column: span 4;
+  }
+}
+
+@media (max-width: 768px) {
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .column, .info-box, .date-box, .extra-banner {
+    grid-column: span 1;
+  }
+  
+  .footer-columns {
+    grid-template-columns: 1fr;
+  }
+  
+  .main-headline {
+    font-size: var(--font-size-lg);
+  }
+  
+  .newspaper-title {
+    font-size: var(--font-size-xl);
+  }
+}
+
+@media (max-width: 480px) {
+  .newspaper-wrapper {
+    padding: var(--space-2);
+  }
+  
+  .newspaper-page.single-page {
+    padding: var(--space-4);
+  }
+  
+  .main-headline {
+    font-size: var(--font-size-md);
+  }
+  
+  .masthead-line {
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+}
+
+/* Project Buttons Styling - GitHub and Medium Only */
+.project-buttons {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+.project-btn {
+  display: inline-flex;
+  filter: grayscale(100%);
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  cursor: pointer;
+}
+
+.project-btn:hover {
+  border: 1px solid var(--color-border);
+  filter: grayscale(0%);
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.project-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Clickable Project Cards - Live Demo */
+.project-card {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border: 1px dotted var(--color-border);
+  padding: var(--space-2);
+  background: var(--color-paper);
+}
+
+.project-card:hover {
+  background: linear-gradient(135deg, var(--color-hover) 0%, rgba(255,253,235,0.9) 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--color-gold);
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card:active {
+  transform: translateY(1px);
+}
+
+.btn-icon {
+  font-size: 1.2rem;
+  display: block;
+}
+
+/* Contact Link Styling */
+.contact-method {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  transition: all 0.3s ease;
+  margin: 0.5rem 0;
+  padding: 0.8rem;
+  border-radius: 50%;
+  background: var(--color-paper-alt);
+  border: 2px solid var(--color-border);
+  width: 60px;
+  height: 60px;
+  margin: 0.5rem auto;
+}
+
+.contact-method:hover {
+  transform: scale(1.1);
+  background: var(--color-hover);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.contact-link-icon {
+  font-size: 1.5rem;
+}
+
+/* Clickable Contact Cards */
+.clickable-contact-card {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.clickable-contact-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 4px 15px rgba(0,0,0,0.12),
+    inset 0 0 80px rgba(115, 99, 82, 0.08);
+  text-decoration: none;
+  color: inherit;
+}
+
+.clickable-contact-card:active {
+  transform: translateY(1px);
+}
+
+.clickable-contact-card .contact-method {
+  pointer-events: none;
+}
+
+/* Large contact titles */
+.contact-title-large {
+  font-size: var(--font-size-xl) !important;
+  font-weight: bold !important;
+  text-align: center !important;
+  margin: 1rem 0 !important;
+  color: var(--text-dark) !important;
+}
+
+/* SVG Icons for contacts */
+.contact-icon-svg {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 1rem auto;
+  display: block;
+  color: var(--text-dark);
+}
+
+/* SVG Icons for project buttons */
+.btn-icon-svg {
+  width: 20px;
+  height: 20px;
+  color: var(--text-dark);
+}
+
+/* Experience date styling */
+.experience-date {
+  float: right;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Career Timeline Styling */
+.career-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* ===== 6.2 Skills Cards ===== */
+/* Skills List - Authentic 1880s Newspaper Print Style */
+.skills-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-xl);
+  padding: var(--space-6) var(--space-4);
+  font-family: var(--font-secondary);
+  border: 3px double var(--color-text-primary);
+  margin: var(--space-6) 0;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.05);
+}
+
+.skills-column {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.skills-column::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: repeating-linear-gradient(
+    to bottom,
+    var(--color-border) 0px,
+    var(--color-border) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
+
+.skill-item {
+  position: relative;
+  padding: 1px 0 1px var(--space-2);
+  font-size: var(--font-size-2xl);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  transition: all 0.15s ease;
+  border-bottom: 1px dotted rgba(0,0,0,0.3);
+  margin-bottom: 1px;
+  font-style: italic;
+  
+}
+
+.skill-item:hover {
+  color: var(--color-accent);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.skill-item:hover::before {
+  color: var(--color-accent);
+}
+
+.skills-column .skill-item:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+/* ===== 6.3 Experience Cards ===== */
+/* Experience Section - 1880s Article Style (About Typography) */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+  margin: var(--space-4) 0;
+}
+
+.experience-entry {
+  padding: var(--space-4) 0;
+  border-bottom: 1px dotted var(--color-border);
+}
+
+.experience-entry:last-child {
+  border-bottom: none;
+}
+
+.experience-role {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-3xl);
+  font-weight: 700;
+  line-height: var(--line-height-tight);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-1);
+}
+
+.experience-org {
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-xl);
+  color: var(--color-accent);
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: var(--space-1);
+}
+
+.experience-meta {
+  font-family: var(--font-tertiary);
+  font-size: var(--font-size-xs);
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--color-border);
+  margin-bottom: var(--space-2);
+}
+
+.experience-summary {
+  font-size: var(--font-size-xl);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  margin-bottom: var(--space-2);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  text-indent: 1em;
+}
+
+.experience-details {
+  font-size: var(--font-size-lg);
+  line-height: var(--leading-normal);
+  text-align: justify;
+  color: var(--color-text-primary);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  font-style: italic;
+}
+
+.experience-points {
+  margin-top: var(--space-2);
+}
+
+.experience-point {
+  font-size: var(--font-size-xl);
+  line-height: var(--leading-normal);
+  position: relative;
+  padding-left: var(--space-4);
+  margin-bottom: var(--space-1);
+}
+
+.experience-point::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--color-accent);
+  font-weight: bold;
+}
+
+/* Experience date styling */
+.experience-date {
+  float: right;
+  font-size: 0.8rem;
+  font-weight: normal;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
+  font-style: italic;
+}
+
+/* Skills medium screen adjustments */
+@media (max-width: 1024px) {
+  .skills-list {
+    gap: var(--space-4);
+  }
+}
+
+/* Skills small screen adjustments */
+@media (max-width: 768px) {
+  
+  /* Skills responsive layout - Vintage newspaper style */
+  .skills-list {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-4);
+    margin: var(--space-4) 0;
+  }
+  
+  .skills-column::before {
+    display: none;
+  }
+  
+  .skill-item {
+    font-size: 0.8rem;
+    padding: 1px 0 1px var(--space-2);
+    line-height: 1.3;
+  }
+  
+  .skill-item::before {
+    font-size: 0.45rem;
+  }
+  
+  .skill-item:hover {
+    letter-spacing: 0.4px;
+  }
+  
+  /* Experience responsive - matches about section rhythm */
+  .experience-list {
+    gap: var(--space-4);
+  }
+  .experience-role {
+    font-size: var(--font-size-md);
+    letter-spacing: 0.5px;
+  }
+  .experience-org {
+    font-size: 0.8rem;
+  }
+  .experience-meta {
+    font-size: 0.65rem;
+  }
+  .experience-summary,
+  .experience-details,
+  .experience-point {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+}
+
+/* Contact responsive design */
+@media (max-width: 768px) {
+  .minimal-contact-links {
+    gap: var(--space-4);
+    margin: var(--space-4) var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .contact-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .contact-note {
+    font-size: 0.7rem;
+    padding: var(--space-1);
+  }
+
+  .contact-projects {
+    grid-template-columns: 1fr;
+    gap: var(--space-2);
+  }
+
+  .contact-card {
+    margin: 0 var(--space-2);
+  }
+
+  .contact-icon-large {
+    width: 40px;
+    height: 40px;
+  }
+
+  .vintage-contact-card {
+    margin: 0 var(--space-2);
+    padding: var(--space-2);
+  }
+
+  .contact-header-vintage {
+    margin-bottom: var(--space-2);
+  }
+
+  .contact-category {
+    font-size: var(--font-size-sm);
+    letter-spacing: 1px;
+  }
+
+  .minimal-contact-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+
+  .mini-contact-item {
+    padding: var(--space-1);
+  }
+
+  .mini-contact-icon {
+    width: 22px;
+    height: 22px;
+  }
+
+  .contact-type {
+    font-size: 0.6rem;
+  }
+
+  .contact-address {
+    font-size: 0.6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .contact-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-1);
+    max-width: 400px;
+  }
+  
+  .contact-card {
+    padding: var(--space-1);
+  }
+  
+  .contact-icon-svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .contact-title {
+    font-size: var(--font-size-xs);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Minimal Contact Extra Small Mobile */
+  .minimal-contact-grid {
+    gap: var(--space-2);
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .mini-contact-item {
+    flex-direction: row;
+    gap: var(--space-2);
+    width: 140px;
+    justify-content: flex-start;
+  }
+  
+  .mini-contact-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .mini-contact-text {
+    font-size: 0.65rem;
+  }
+  
+  /* Extra small mobile navigation */
+  .nav-link {
+    min-width: calc(50% - 1px);
+    font-size: 9px;
+    padding: 3px 4px;
+    letter-spacing: 0.3px;
+  }
+  
+  /* Vintage Contact Extra Small Mobile */
+  .vintage-contact-list {
+    padding: var(--space-1);
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .contact-label {
+    font-size: 0.65rem;
+  }
+  
+  .contact-link {
+    font-size: 0.75rem;
+  }
+  
+  .contact-cards {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-1);
+    max-width: 320px;
+  }
+  
+  .contact-card {
+    padding: 0.3rem;
+  }
+  
+  .contact-icon-svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .contact-title {
+    font-size: 0.7rem;
+  }
+}

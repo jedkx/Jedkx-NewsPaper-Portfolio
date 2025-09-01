@@ -1,0 +1,110 @@
+/* 📝 Typography - Standardized Vintage 1990s Newspaper Style */
+
+/* Typography variables imported from main CSS */
+
+/* Newspaper Text Styles */
+.newspaper-text {
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  color: var(--text-black);
+  text-align: justify;
+  margin-bottom: var(--spacing-sm);
+  column-count: auto;
+}
+
+.newspaper-text.small {
+  font-size: var(--font-size-xs);
+  line-height: var(--line-height-tight);
+}
+
+.newspaper-text.tiny {
+  font-size: 0.65rem;
+  line-height: var(--line-height-tight);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Skills Section */
+.skills-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.skill-category {
+  margin-bottom: var(--spacing-sm);
+}
+
+.skill-header {
+  font-family: var(--font-headline);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  border-bottom: 1px solid var(--border-gray);
+  padding-bottom: 1px;
+}
+
+/* Experience Section */
+.experience-item {
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px dotted var(--border-gray);
+  padding-bottom: var(--spacing-sm);
+}
+
+.job-title {
+  font-family: var(--font-headline);
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.company-info {
+  font-family: var(--font-caption);
+  font-size: var(--font-size-xs);
+  font-style: italic;
+  color: var(--accent-brown);
+  margin-bottom: var(--spacing-xs);
+}
+
+/* Project Items */
+.project-item {
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 1px dotted var(--border-gray);
+  padding-bottom: var(--spacing-xs);
+}
+
+.project-title {
+  font-family: var(--font-headline);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+  margin-bottom: 1px;
+}
+
+/* Drop Cap Effect */
+.newspaper-text:first-child::first-letter {
+  font-family: var(--font-headline);
+  font-size: 3rem;
+  font-weight: bold;
+  line-height: 0.8;
+  float: left;
+  padding: 0.1rem 0.2rem 0 0;
+  margin-top: 0.1rem;
+  color: var(--text-black);
+}
+
+/* Print Media Queries */
+@media print {
+  .newspaper-text {
+    font-size: 0.8rem;
+    line-height: 1.1;
+  }
+  
+  .main-headline {
+    font-size: 2.5rem;
+  }
+  
+  .newspaper-title {
+    font-size: 2rem;
+  }
+}

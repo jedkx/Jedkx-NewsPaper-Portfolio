@@ -1,0 +1,109 @@
+/**
+ * Error Boundary Styles
+ * 
+ * @author Caner Coşkun
+ * @version 1.0.0
+ * @description Styles for error boundary component
+ */
+
+/* Error page specific styles */
+.error-content {
+  padding: var(--spacing-xl, 2rem);
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.error-actions {
+  display: flex;
+  gap: var(--spacing-md, 1rem);
+  margin-top: var(--spacing-lg, 1.5rem);
+  flex-wrap: wrap;
+}
+
+.error-button {
+  background: var(--color-accent-brown, #736352);
+  color: var(--color-paper-bg, #f7f4ed);
+  border: 2px solid var(--color-accent-brown, #736352);
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+  font-family: var(--font-headline, serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all var(--transition-normal, 0.3s);
+  border-radius: var(--border-radius, 2px);
+}
+
+.error-button:hover,
+.error-button:focus {
+  background: var(--color-paper-bg, #f7f4ed);
+  color: var(--color-accent-brown, #736352);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-link {
+  display: inline-block;
+  color: var(--color-accent-brown, #736352);
+  text-decoration: none;
+  border: 2px solid var(--color-accent-brown, #736352);
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+  font-family: var(--font-headline, serif);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all var(--transition-normal, 0.3s);
+  border-radius: var(--border-radius, 2px);
+  background: transparent;
+}
+
+.error-link:hover,
+.error-link:focus {
+  background: var(--color-accent-brown, #736352);
+  color: var(--color-paper-bg, #f7f4ed);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.error-details {
+  margin-top: var(--spacing-xl, 2rem);
+  border: 1px solid var(--color-border, #5a5651);
+  border-radius: var(--border-radius, 2px);
+  overflow: hidden;
+}
+
+.error-details summary {
+  background: var(--color-classified-bg, #f9f7f2);
+  padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+  cursor: pointer;
+  font-weight: 600;
+  border-bottom: 1px solid var(--color-border, #5a5651);
+}
+
+.error-details summary:hover {
+  background: var(--color-hover, rgba(255, 248, 220, 0.8));
+}
+
+.error-stack {
+  background: var(--color-ink-stain, #3d3a35);
+  color: var(--color-paper-bg, #f7f4ed);
+  padding: var(--spacing-md, 1rem);
+  font-family: 'Courier New', monospace;
+  font-size: var(--font-size-sm, 0.875rem);
+  white-space: pre-wrap;
+  overflow-x: auto;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .error-actions {
+    flex-direction: column;
+  }
+  
+  .error-button,
+  .error-link {
+    text-align: center;
+    width: 100%;
+  }
+}
