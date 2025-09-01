@@ -13,7 +13,6 @@ import emailIcon from './assets/email.svg';
 import linkedinIcon from './assets/linkedin.svg';
 import mediumIcon from './assets/medium.svg';
 import githubIcon from './assets/github.svg';
-import forgCharacter from './assets/forg-character.png';
 
 const App = () => {
   return (
@@ -276,7 +275,7 @@ const App = () => {
                 <div className="project-image-box">
                   <div className="image-placeholder">
                     <div className="image-border">
-                      <img src={forgCharacter} alt="Forg Game Character" className="project-visual forg-character" />
+                      <div className="project-visual forg-character">🐸</div>
                     </div>
                     <div className="project-buttons">
                     <a href="https://github.com/jedkx/forg" target="_blank" className="project-btn" title="View Source Code">

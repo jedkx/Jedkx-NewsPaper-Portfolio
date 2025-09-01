@@ -1213,13 +1213,14 @@ a.education-card:hover {
 
 /* Forg character specific styling */
 .project-visual.forg-character {
+  font-size: 4rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 80px;
   height: 80px;
-  object-fit: contain;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  filter: grayscale(100%) contrast(1.1);
+  filter: grayscale(100%);
 }
 
 .project-story-block:hover .project-visual {
@@ -1229,8 +1230,8 @@ a.education-card:hover {
 }
 
 .project-story-block:hover .project-visual.forg-character {
-  filter: grayscale(0%) contrast(1.2) brightness(1.1);
-  transform: scale(1.15);
+  filter: grayscale(0%);
+  transform: scale(1.2);
 }
 
 .image-caption-box {
