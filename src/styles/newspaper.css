@@ -76,10 +76,7 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 100px;
-}
+/* Removed html scroll-behavior to let JavaScript handle scrolling completely */
 
 body {
   font-family: var(--font-secondary);
@@ -265,7 +262,7 @@ body {
 .newspaper-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr); 
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto auto auto; /* Added 4th row for contact */
   gap: 0.3rem;
   max-width: 1400px;
   margin: 0 auto;
@@ -377,7 +374,7 @@ a.education-card:hover {
 /* ===== 8. PROJECTS SECTION ===== */
 
 .feature-article {
-  grid-column: 1 / 7; /* Columns 1-6 - Projects için wider */
+  grid-column: 1 / 8; /* Columns 1-7 - Projects section */
   grid-row: 2;
   overflow: hidden;
   align-self: start;
@@ -397,7 +394,7 @@ a.education-card:hover {
 /* ===== 9. EDUCATION SECTION ===== */
 
 .education-section {
-  grid-column: 7 / 13; /* Right side - columns 7-12 */
+  grid-column: 8 / 13; /* Columns 7-13 - Education section */
   grid-row: 2;
   padding: var(--space-4);
   margin-top: 0; /* Reset margin to align with projects */
@@ -491,10 +488,24 @@ a.education-card:hover {
 /* ===== 10. CONTACT SECTION ===== */
 
 .contact-section {
-  grid-column: 1 / 13; /* Full width */
-  grid-row: 3;
+  grid-column: 1 / 13; /* Columns 7-13 - Same as education */
+  grid-row: 3; /* Row 3 below education */
   align-self: start;
-  padding-top: var(--space-4); /* Consistent padding */
+  padding: var(--space-4);
+  margin-left: var(--space-4);
+  margin-right: var(--space-2);
+  padding-top: var(--space-2); /* Small top padding for separation */
+  margin-top: 0; /* Remove negative margin */
+}
+
+/* Separator line to connect contact with education visually */
+.contact-section::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--color-text-secondary);
+  margin: var(--space-6) 0 var(--space-4) 0;
 }
 
 .contact-cards {
@@ -562,8 +573,8 @@ a.education-card:hover {
 
 /* Minimal Contact in Education Section */
 .education-contact-section {
-  margin-top: var(--space-6);
-  padding-top: var(--space-4);
+  margin-top: var(--space-2); /* Reduced from space-6 to bring closer */
+  padding-top: var(--space-2); /* Reduced padding */
   border-top: 1px solid var(--color-text-secondary);
   text-align: center;
 }
@@ -1168,6 +1179,13 @@ a.education-card:hover {
   border-bottom: 1px solid var(--color-border);
   padding: var(--space-4);
   align-items: start;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.project-story-block:hover {
+  background-color: rgba(139, 115, 85, 0.05);
+  transform: translateY(-2px);
 }
 
 .project-story-block:last-child {
@@ -1209,6 +1227,18 @@ a.education-card:hover {
   filter: grayscale(100%);
   transition: all 0.3s ease;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 4px;
+  filter: grayscale(20%);
+  transition: all 0.3s ease;
 }
 
 /* Forg character specific styling */
@@ -1227,6 +1257,11 @@ a.education-card:hover {
   filter: grayscale(0%);
   color: var(--color-gold);
   transform: scale(1.1);
+}
+
+.project-story-block:hover .project-image {
+  filter: grayscale(0%);
+  transform: scale(1.05);
 }
 
 .project-story-block:hover .project-visual.forg-character {
@@ -1639,7 +1674,7 @@ a.education-card:hover {
   }
   
   .education-section {
-    grid-column: 1 / 9;
+    grid-column: 6 / 9;
   }
 }
 
@@ -1764,16 +1799,16 @@ a.education-card:hover {
   .education-section {
     grid-row: 6;
   }
-  
-  .contact-section {
-    grid-row: 7;
+
+  /* Contact section is now inside education section */
+  .education-contact-section {
+    margin-top: var(--space-4);
+    padding-top: var(--space-4);
   }
-  
+
   .contact-minimal-layout {
     gap: var(--space-2);
-  }
-  
-  .contact-intro {
+  }  .contact-intro {
     font-size: 0.8rem;
   }
   

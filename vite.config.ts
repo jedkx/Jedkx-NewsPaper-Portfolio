@@ -1,12 +1,33 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-// Vite Configuration for Production
+// Enhanced Vite Configuration for TypeScript Portfolio
 export default defineConfig({
   plugins: [react()],
   
   // Base URL for GitHub Pages deployment
   base: '/Jedkx-NewsPaper-Portfolio/',
+  
+  // Define global constants
+  define: {
+    __APP_VERSION__: JSON.stringify(process.env.npm_package_version || '1.0.0'),
+    __BUILD_TIME__: JSON.stringify(new Date().toISOString()),
+  },
+  
+  // Path resolution with aliases
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@/components': '/src/components',
+      '@/pages': '/src/pages',
+      '@/lib': '/src/lib',
+      '@/types': '/src/types',
+      '@/assets': '/src/assets',
+      '@/styles': '/src/styles',
+      '@/hooks': '/src/hooks',
+      '@/utils': '/src/utils'
+    }
+  },
   
   // Build optimizations
   build: {
@@ -19,16 +40,16 @@ export default defineConfig({
     // Performance optimizations
     chunkSizeWarningLimit: 1000,
     
-    // Rollup options
+    // Enhanced Rollup options for TypeScript
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ['react', 'react-dom'],
-          styles: ['./src/styles/newspaper.css', './src/styles/typography.css', './src/styles/layout.css']
+          utils: ['./src/lib/scroll.ts', './src/lib/data.ts']
         },
         // Optimize asset file names
         assetFileNames: (assetInfo) => {
-          const info = assetInfo.name.split('.');
+          const info = assetInfo.name!.split('.');
           const ext = info[info.length - 1];
           if (/png|jpe?g|svg|gif|tiff|bmp|ico/i.test(ext)) {
             return `images/[name]-[hash][extname]`;
@@ -47,17 +68,17 @@ export default defineConfig({
   // Server configuration
   server: {
     port: 3000,
-    host: true
+    host: true,
+    open: false
   },
   
-  // Preview configuration
-  preview: {
-    port: 4173,
-    host: true
+  // Development optimizations
+  esbuild: {
+    target: 'es2020'
   },
   
-  // Performance optimizations
-  optimizeDeps: {
-    include: ['react', 'react-dom']
+  // CSS handling
+  css: {
+    devSourcemap: true
   }
 });
