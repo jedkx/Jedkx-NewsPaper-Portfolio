@@ -1776,21 +1776,21 @@ a.education-card:hover {
     box-sizing: border-box;
   }
   
-  /* Mobile Navigation - Larger touch targets */
+  /* Mobile Navigation - Compact layout */
   .newspaper-nav {
     flex-wrap: wrap;
-    gap: 2px;
-    padding: var(--space-2) 0;
+    gap: 1px;
+    padding: var(--space-1) 0;
   }
   
   .nav-link {
     flex: 1;
-    min-width: calc(50% - 1px);
-    font-size: 12px;
-    padding: 8px 12px;
-    letter-spacing: 0.8px;
+    min-width: calc(33.33% - 1px);
+    font-size: 11px;
+    padding: 6px 8px;
+    letter-spacing: 0.6px;
     text-align: center;
-    min-height: 36px;
+    min-height: 32px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2393,20 +2393,22 @@ a.education-card:hover {
     padding: var(--space-2);
   }
   
-  /* XS Navigation - Stack vertically for better touch */
+  /* XS Navigation - Compact horizontal layout */
   .newspaper-nav {
-    flex-direction: column;
-    gap: 2px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1px;
     padding: var(--space-1) 0;
   }
   
   .nav-link {
-    width: 100%;
-    min-width: 100%;
-    font-size: 13px;
-    padding: 10px 16px;
-    min-height: 40px;
-    letter-spacing: 1px;
+    flex: 1;
+    min-width: calc(33.33% - 1px);
+    font-size: 10px;
+    padding: 8px 4px;
+    min-height: 32px;
+    letter-spacing: 0.5px;
+    text-align: center;
   }
   
   /* XS Typography */
