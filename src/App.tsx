@@ -110,7 +110,7 @@ const App: FC = () => {
               <EducationSection />
             </Suspense>
 
-            {/* Contact Section - Separate component, same grid as education */}
+            {/* Contact Section - Telegraph Office */}
             <Suspense fallback={<LoadingSpinner />}>
               <ContactSection />
             </Suspense>

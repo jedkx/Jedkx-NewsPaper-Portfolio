@@ -1679,82 +1679,130 @@ a.education-card:hover {
 }
 
 @media (max-width: 1024px) {
+  /* Tablet Layout - Better grid organization */
   .newspaper-grid {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-3);
+    max-width: 100%;
   }
   
   .lead-article {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 1;
   }
   
   .tech-article {
-    grid-column: 3 / 5;
+    grid-column: 4 / 7;
     grid-row: 1;
   }
   
   .business-article {
-    grid-column: 1 / 3;
+    grid-column: 1 / 4;
     grid-row: 2;
   }
   
   .feature-article {
-    grid-column: 3 / 5;
+    grid-column: 4 / 7;
     grid-row: 2;
   }
   
-  .classified-section {
-    grid-column: 1 / 5;
-    grid-row: 3;
-  }
-  
   .education-section {
-    grid-column: 1 / 5;
-    grid-row: 4;
+    grid-column: 1 / 7;
+    grid-row: 3;
+    margin-left: 0;
+    margin-right: 0;
   }
   
   .contact-section {
-    grid-column: 1 / 5;
-    grid-row: 5;
+    grid-column: 1 / 7;
+    grid-row: 4;
+    margin-left: 0;
+    margin-right: 0;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
+  /* Tablet Projects - 2-column image layout */
+  .project-story-block {
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-3);
+    padding: var(--space-3);
   }
   
-  .project-buttons {
-    justify-content: center;
+  .image-border {
+    width: 100px;
+    height: 100px;
   }
   
-  .project-btn {
-    width: 35px;
-    height: 35px;
+  .project-story-headline {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .project-story-content {
+    font-size: var(--font-size-lg);
+  }
+  
+  /* Tablet Navigation */
+  .nav-link {
+    font-size: 11px;
+    padding: 6px 10px;
+    letter-spacing: 1px;
+  }
+  
+  /* Tablet Contact */
+  .minimal-contact-links {
+    gap: var(--space-4);
+    flex-wrap: nowrap;
+  }
+  
+  .contact-logo {
+    width: 28px;
+    height: 28px;
   }
 }
 
 /* ===== 12. RESPONSIVE DESIGN ===== */
 
 @media (max-width: 768px) {
-  /* Mobile Navigation */
+  /* Mobile Wrapper - Fix overflow */
+  .newspaper-wrapper {
+    padding: var(--space-1);
+    overflow-x: hidden;
+  }
+  
+  .newspaper-page.single-page {
+    padding: var(--space-2);
+    margin: 0;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Mobile Navigation - Larger touch targets */
   .newspaper-nav {
     flex-wrap: wrap;
-    gap: 0;
-    padding: var(--space-1) 0;
+    gap: 2px;
+    padding: var(--space-2) 0;
   }
   
   .nav-link {
     flex: 1;
-    min-width: calc(33.33% - 2px);
-    font-size: 10px;
-    padding: 4px 6px;
-    letter-spacing: 0.5px;
+    min-width: calc(50% - 1px);
+    font-size: 12px;
+    padding: 8px 12px;
+    letter-spacing: 0.8px;
     text-align: center;
+    min-height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  /* Mobile Grid - Single column with proper spacing */
   .newspaper-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: var(--space-4);
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
   }
   
   .lead-article,
@@ -1765,66 +1813,184 @@ a.education-card:hover {
   .education-section,
   .news-sidebar {
     grid-column: 1;
-    margin-bottom: var(--space-6);
+    margin-bottom: var(--space-4);
+    margin-left: 0;
+    margin-right: 0;
+    padding: var(--space-3);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
   
-  .newspaper-card {
-    padding: 1rem;
+  /* Mobile Typography - Better readability */
+  .newspaper-title {
+    font-size: var(--font-size-4xl);
+    letter-spacing: 2px;
+    margin: var(--space-2) 0;
+    line-height: 1.1;
   }
   
+  .main-headline {
+    font-size: var(--font-size-lg);
+    letter-spacing: 1px;
+    line-height: 1.2;
+  }
+  
+  .section-header {
+    font-size: var(--font-size-lg);
+    margin-bottom: var(--space-2);
+  }
+  
+  .article-headline {
+    font-size: var(--font-size-2xl);
+    letter-spacing: 1px;
+    line-height: 1.2;
+    margin-bottom: var(--space-2);
+  }
+  
+  /* Mobile Projects - Keep original layout but responsive */
   .project-story-block {
-    margin-bottom: var(--space-6);
+    grid-template-columns: 140px 1fr;
+    gap: var(--space-3);
+    margin-bottom: var(--space-4);
+    padding: var(--space-3);
+    align-items: start;
   }
   
+  .project-image-box {
+    order: 1;
+  }
+  
+  .project-article-text {
+    order: 2;
+    padding-left: var(--space-2);
+  }
+  
+  .image-border {
+    width: 120px;
+    height: 120px;
+    margin-bottom: var(--space-2);
+  }
+  
+  .project-story-headline {
+    font-size: var(--font-size-2xl);
+    text-align: left;
+    margin-bottom: var(--space-2);
+  }
+  
+  .project-story-content {
+    font-size: var(--font-size-lg);
+    text-align: justify;
+    line-height: 1.4;
+  }
+  
+  /* Mobile Contact - Fix the layout */
+  .contact-section {
+    grid-column: 1;
+    grid-row: 6;
+    order: 6;
+    margin-left: 0;
+    margin-right: 0;
+    padding: var(--space-3);
+  }
+  
+  .minimal-contact-links {
+    gap: var(--space-3);
+    margin: var(--space-3) 0;
+    padding: var(--space-3);
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .minimal-contact-item {
+    padding: var(--space-2);
+    min-width: 60px;
+    min-height: 60px;
+  }
+  
+  .contact-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  /* Mobile Grid Order - Better flow with Contact */
   .lead-article {
     grid-row: 1;
+    order: 1;
   }
   
   .business-article {
     grid-row: 2;
+    order: 2;
   }
   
   .tech-article {
     grid-row: 3;
+    order: 3;
   }
   
   .feature-article {
     grid-row: 4;
-  }
-  
-  .classified-section {
-    grid-row: 5;
+    order: 4;
   }
   
   .education-section {
+    grid-row: 5;
+    order: 5;
+  }
+  
+  .contact-section {
     grid-row: 6;
+    order: 6;
   }
 
-  /* Contact section is now inside education section */
-  .education-contact-section {
-    margin-top: var(--space-4);
-    padding-top: var(--space-4);
+  /* Contact section is separate from education */
+  .contact-section {
+    grid-column: 1;
+    grid-row: 6;
+    order: 6;
+    margin-left: 0;
+    margin-right: 0;
+    padding: var(--space-3);
+    border-top: 1px dotted var(--color-border);
+    margin-top: var(--space-2);
   }
 
   .contact-minimal-layout {
     gap: var(--space-2);
-  }  .contact-intro {
-    font-size: 0.8rem;
+  }
+
+  .contact-intro {
+    font-size: var(--font-size-sm);
+    text-align: center;
+    margin-bottom: var(--space-2);
   }
   
   .contact-buttons-minimal {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+    max-width: 300px;
+    margin: 0 auto;
   }
   
   .contact-btn-minimal {
-    font-size: 0.75rem;
-    padding: var(--space-1) var(--space-2);
+    font-size: var(--font-size-sm);
+    padding: var(--space-2);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
+  /* Mobile Footer */
   .footer-line {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-2);
+  }
+  
+  .footer-section {
+    width: 100%;
   }
 }
 
@@ -2218,21 +2384,107 @@ a.education-card:hover {
 }
 
 @media (max-width: 480px) {
+  /* Extra Small Mobile - Enhanced */
   .newspaper-wrapper {
-    padding: var(--space-2);
+    padding: 4px;
   }
   
   .newspaper-page.single-page {
-    padding: var(--space-4);
+    padding: var(--space-2);
+  }
+  
+  /* XS Navigation - Stack vertically for better touch */
+  .newspaper-nav {
+    flex-direction: column;
+    gap: 2px;
+    padding: var(--space-1) 0;
+  }
+  
+  .nav-link {
+    width: 100%;
+    min-width: 100%;
+    font-size: 13px;
+    padding: 10px 16px;
+    min-height: 40px;
+    letter-spacing: 1px;
+  }
+  
+  /* XS Typography */
+  .newspaper-title {
+    font-size: var(--font-size-3xl);
+    letter-spacing: 1px;
+    margin: var(--space-1) 0;
   }
   
   .main-headline {
     font-size: var(--font-size-md);
+    letter-spacing: 0.5px;
   }
   
   .masthead-line {
     flex-direction: column;
     gap: var(--space-1);
+    font-size: 0.6rem;
+  }
+  
+  /* XS Content Spacing */
+  .newspaper-grid {
+    gap: var(--space-2);
+  }
+  
+  .lead-article,
+  .tech-article,
+  .business-article,
+  .feature-article,
+  .education-section {
+    padding: var(--space-2);
+    margin-bottom: var(--space-2);
+  }
+  
+  /* XS Projects - Keep 2-column layout but smaller */
+  .project-story-block {
+    grid-template-columns: 100px 1fr;
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+  
+  .image-border {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .project-story-headline {
+    font-size: var(--font-size-lg);
+    line-height: 1.2;
+  }
+  
+  .project-story-content {
+    font-size: var(--font-size-sm);
+    line-height: 1.4;
+  }
+  
+  /* XS Contact */
+  .minimal-contact-links {
+    padding: var(--space-2);
+    gap: var(--space-2);
+  }
+  
+  .minimal-contact-item {
+    min-width: 50px;
+    min-height: 50px;
+    padding: var(--space-1);
+  }
+  
+  .contact-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .contact-note {
+    font-size: var(--font-size-sm);
+    padding: var(--space-2);
+    text-align: center;
+    margin-top: var(--space-2);
   }
 }
 
@@ -2441,18 +2693,21 @@ a.education-card:hover {
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
   font-weight: 500;
-  letter-spacing: 0.2px;
+  font-family: var(--font-primary);
+  letter-spacing: 1px;
   transition: all 0.15s ease;
   border-bottom: 1px dotted rgba(0,0,0,0.3);
   margin-bottom: 1px;
   font-style: italic;
-  
+  text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
 }
 
 .skill-item:hover {
   color: var(--color-accent);
-  font-weight: 500;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  transform: translateX(2px);
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.15);
 }
 
 .skill-item:hover::before {
@@ -2568,7 +2823,17 @@ a.education-card:hover {
 /* Skills medium screen adjustments */
 @media (max-width: 1024px) {
   .skills-list {
-    gap: var(--space-4);
+    gap: var(--space-3);
+    padding: var(--space-3);
+  }
+  
+  .skill-item {
+    font-size: var(--font-size-lg);
+    padding: 2px 0 2px var(--space-2);
+    font-weight: 600;
+    font-family: var(--font-primary);
+    font-style: italic;
+    letter-spacing: 0.8px;
   }
 }
 
@@ -2578,9 +2843,9 @@ a.education-card:hover {
   /* Skills responsive layout - Vintage newspaper style */
   .skills-list {
     grid-template-columns: 1fr;
-    gap: var(--space-4);
-    padding: var(--space-4);
-    margin: var(--space-4) 0;
+    gap: var(--space-2);
+    padding: var(--space-3);
+    margin: var(--space-3) 0;
   }
   
   .skills-column::before {
@@ -2588,37 +2853,87 @@ a.education-card:hover {
   }
   
   .skill-item {
-    font-size: 0.8rem;
-    padding: 1px 0 1px var(--space-2);
-    line-height: 1.3;
-  }
-  
-  .skill-item::before {
-    font-size: 0.45rem;
+    font-size: var(--font-size-md);
+    padding: 3px 0 3px var(--space-2);
+    line-height: 1.4;
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-family: var(--font-primary);
+    font-style: italic;
+    letter-spacing: 0.8px;
   }
   
   .skill-item:hover {
-    letter-spacing: 0.4px;
+    letter-spacing: 1px;
+    font-weight: 700;
   }
   
   /* Experience responsive - matches about section rhythm */
   .experience-list {
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
+  
+  .experience-role {
+    font-size: var(--font-size-lg);
+    letter-spacing: 0.8px;
+    line-height: 1.3;
+  }
+  
+  .experience-org {
+    font-size: var(--font-size-md);
+  }
+  
+  .experience-meta {
+    font-size: 0.7rem;
+  }
+  
+  .experience-summary,
+  .experience-details,
+  .experience-point {
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+  }
+}
+
+/* Extra small mobile adjustments */
+@media (max-width: 480px) {
+  .skills-list {
+    padding: var(--space-2);
+    margin: var(--space-2) 0;
+    gap: var(--space-1);
+  }
+  
+  .skill-item {
+    font-size: var(--font-size-sm);
+    padding: 2px 0 2px var(--space-1);
+    line-height: 1.3;
+    font-weight: 500;
+    font-family: var(--font-primary);
+    font-style: italic;
+    letter-spacing: 0.6px;
+  }
+  
+  .experience-list {
+    gap: var(--space-2);
+  }
+  
   .experience-role {
     font-size: var(--font-size-md);
     letter-spacing: 0.5px;
   }
+  
   .experience-org {
-    font-size: 0.8rem;
+    font-size: var(--font-size-sm);
   }
+  
   .experience-meta {
     font-size: 0.65rem;
   }
+  
   .experience-summary,
   .experience-details,
   .experience-point {
-    font-size: 0.85rem;
+    font-size: var(--font-size-sm);
     line-height: 1.4;
   }
 }
